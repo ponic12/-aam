@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Opciones</ion-title>
+    <img src="/assets/images/logo.jpg" class="logo" >
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card padding>
+    <h2 style="text-align:center">Cant.dias sin alertar: <strong>{{cfg.maxDays}}</strong></h2>
+    <ion-range min="0" step="7" max="90" pin="true" snaps="true" [(ngModel)]="cfg.maxDays">
+      <ion-label range-left class="small-text">0</ion-label> 
+      <ion-label range-right>90</ion-label>
+    </ion-range> 
+  </ion-card>
+  <ion-card padding>
+    <h2 style="text-align:center">Cant.de pesos sin alertar: <strong>{{cfg.maxMoney | currency:'USD':true:'1.0-0'}}</strong></h2>
+    <ion-range min="0" step="500" max="5000" pin="true" snaps="true" [(ngModel)]="cfg.maxMoney">
+      <ion-label range-left class="small-text">0</ion-label>
+      <ion-label range-right>$5000</ion-label>
+    </ion-range>
+  </ion-card>
+  <button ion-button block (click)="save()" 
+    style="width: 50%;position: absolute;margin-left: 20%;margin-top: 30px;">
+    Guardar cambios
+  </button>
+</ion-content>

@@ -1,0 +1,10 @@
+Exportacion PDF y Excel
+
+Ventas: Seleccion nuevo usuario toma primer char solo
+Ventas: Filtro fechas en Ventas
+Ventas: Nuevo registro de detalle no actualiza el total del mov.
+
+Cuentas corrientes: Ingreso nueva factura y no agrega en el listado de ctas.ctes. la nueva info
+ 
+Calculo de montos y precios (Refresco)
+Funciones en Firebase server para generar Data de graficos y recalculo de totales

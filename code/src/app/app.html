@@ -1,0 +1,34 @@
+<!--<div *ngIf="user?.uid;else loginBox">-->
+<!--  <h2>TITULO PPAL.</h2>-->
+<!--</div>-->
+
+<div *ngIf="!isLoggedIn()"> 
+  <ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title menuClose (click)="openPage(home)"><ion-icon [name]="home.icon" class="menuIcon"></ion-icon><span style="margin-left:10px; text-shadow: 1px 1.5px 1px #aaa;">{{home.title}}</span></ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <button *ngFor="let p of pages" 
+          menuClose ion-item
+          (click)="openPage(p)">
+          <ion-icon [name]="p.icon" class="menuIcon"></ion-icon><span style="margin-left:10px; text-shadow: 1px 1.5px 1px #aaa;">{{p.title}}</span> 
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>  
+</div>
+
+<ng-template #loginBox> 
+  <div stye="text-align:center;">
+    <h2>Administrador de cuentas de cliente</h2>
+  </div>
+  <button (click)="loginWithGoogle()">
+    Login con Google
+  </button>
+</ng-template>

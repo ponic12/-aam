@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="float:left;padding-top: 8px;"><strong>Ventas del dia</strong></ion-title>
+    <ion-label style="float:right">{{today | date:'dd-MM-yyyy'}}</ion-label>
+  </ion-navbar>
+
+  <div style="text-align:center">
+      <ion-label><strong>Total: {{totDay | currency:'USD':true:'1.0-0'}}</strong></ion-label>
+      <ion-label><strong>Efvo:</strong>{{totEF | currency:'USD':true:'1.0-0'}} / <strong>Tar:</strong>{{totTG | currency:'USD':true:'1.0-0'}} / <strong>PC:</strong>{{totPC | currency:'USD':true:'1.0-0'}} / <strong>CC:</strong>{{totCC | currency:'USD':true:'1.0-0'}}</ion-label>
+  </div>  
+</ion-header>
+
+<ion-content>
+  <ion-grid class="gridInfo">
+    <ion-row class="rowHeader">
+      <ion-col col-2 (click)="sortByDate()">Hora</ion-col>
+      <ion-col col-6 (click)="sortByName()">Cliente</ion-col>
+      <ion-col col-1 (click)="sortByCP()">CP</ion-col>
+      <ion-col col-3 (click)="sortByAmount()" style="text-align:right">Monto</ion-col>
+    </ion-row>
+    <div *ngFor="let mov of sales$ | async">
+      <ion-row align-items-end *ngIf="(mov.cp != 'CC')"
+        style="background:linear-gradient(to bottom, #eee 0%, #eee 88%, #ccc 100%)"
+        (click)="openDetails($event, mov)">
+        <ion-col col-2 >{{mov.datetime | date:'HH:mm'}}</ion-col>
+        <ion-col col-6 >{{mov.fullName}}</ion-col>
+        <ion-col col-1 >{{mov.cp}}</ion-col>
+        <ion-col col-3 style="text-align:right">{{mov.amount | currency:'USD':true}}</ion-col>
+      </ion-row>      
+    </div>
+  </ion-grid>
+
+  <ion-fab right bottom>
+    <button ion-fab primary mini (click)="openDetails({})">
+      <span style="font-size:30px">+</span>
+    </button>
+  </ion-fab>
+</ion-content>

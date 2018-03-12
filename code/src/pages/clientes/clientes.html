@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Clientes</ion-title>
+    <img src="/assets/images/logo.jpg" class="logo" >
+  </ion-navbar>
+    
+  <ion-item>        
+    <ion-label> <ion-icon name="search"></ion-icon></ion-label>
+    <ion-input clearInput type="text" [(ngModel)]="criteria" clearInput placeholder="Buscar cliente"  required></ion-input>
+  </ion-item>
+</ion-header>
+
+<ion-content padding class="bkg">
+  <ion-list>
+    <ion-item-sliding style="padding-right: 4px;" 
+      *ngFor="let cli of clients$ | async | filterAgenda:criteria"  >
+      <ion-item
+        class="clientCard" [style.background]="(cli.balance >= 0) ? 
+        'linear-gradient(to bottom, #ded 0%, #ded 88%, #cdc 100%)':
+        'linear-gradient(to bottom, #edd 0%, #edd 88%, #dcc 100%)'" >
+        <ion-grid no-padding>
+          <ion-row style="font-size:14px" no-padding>
+            <ion-col col-12 col-sm-6 col-lg-4>
+              <ion-icon name="cart" item-left></ion-icon> <strong>{{cli.balance | currency:'USD':true:'1.0-0' }}</strong>
+            </ion-col>
+            <ion-col col-12 col-sm-6 col-lg-4>
+              <ion-icon name="person" item-left></ion-icon>{{cli.lastName}} {{cli.firstName}} 
+            </ion-col>
+            <ion-col col-12 col-sm-6 col-lg-4>
+              <ion-icon name="pin" item-left></ion-icon>{{cli.address}} 
+            </ion-col>
+            <ion-col col-12 col-sm-6 col-lg-4>
+              <ion-icon name="mail" item-left></ion-icon>{{cli.email}}
+            </ion-col>
+            <ion-col col-12 col-sm-6 col-lg-4>
+              <ion-icon name="call" item-left></ion-icon>{{cli.telephone}}
+            </ion-col>
+            <ion-col col-12 col-sm-6 col-lg-4>
+              <ion-icon name="calendar" item-left></ion-icon>{{cli.birthday}}
+            </ion-col>            
+          </ion-row>
+        </ion-grid>
+        
+        <!--<div>-->
+        <!--  <ion-icon name="cart" item-left></ion-icon>-->
+        <!--  {{cli.balance | currency:'USD':true:'1.0-0' }}-->
+        <!--  <div style="float:right">-->
+        <!--    <ion-icon name="calendar" item-left></ion-icon>-->
+        <!--    {{cli.lastDatePaid | date:'dd-MM-yyyy  HH:mm' }}-->
+        <!--  </div>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--  <ion-icon name="person" item-left></ion-icon>-->
+        <!--  {{cli.lastName}}-->
+        <!--  {{cli.firstName}}            -->
+        <!--</div>-->
+        <!--<div>-->
+        <!--  <ion-icon name="locate" item-left></ion-icon>-->
+        <!--  {{cli.address}}            -->
+        <!--</div>-->
+        <!--<div>-->
+        <!--  <ion-icon name="mail" item-left></ion-icon>-->
+        <!--  {{cli.email}}-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--  <ion-icon name="call" item-left></ion-icon>-->
+        <!--  {{cli.telephone}}-->
+        <!--</div>-->
+      </ion-item>
+      
+      <ion-item-options side="left">
+        <button ion-button class="cardOps" style="background:linear-gradient(#ffa,orange)" (click)="mailClient($event, cli)">
+          <ion-icon name="text"></ion-icon>
+          Mail
+        </button>
+        <button ion-button class="cardOps" style="background:linear-gradient(#bbf,#339)"  (click)="callClient($event, cli)">
+          <ion-icon name="call"></ion-icon>
+          Llamar
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button class="cardOps" style="background:linear-gradient(#bfb,#393)" (click)="openClient($event, cli)">
+          <ion-icon name="create"></ion-icon>
+          Editar
+        </button>
+        <button ion-button class="cardOps" style="background:linear-gradient(#fbb,#d22)" (click)="deleteClient($event, cli)">
+          <ion-icon name="trash"></ion-icon>
+          Borrar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  
+  <ion-fab right bottom>
+    <button ion-fab color="primary" mini (click)="openClient()">
+      <span style="font-size:30px">+</span>
+    </button>
+  </ion-fab>
+</ion-content>
+
+
+

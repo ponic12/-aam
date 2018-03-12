@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}} Total: 
+      {{mov.amount | currency:'USD':true:'1.0-0'}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="close-circle" class="closeIcon" showWhen="android,windows,mobileweb,core"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row class="movInfo">
+      <ion-col col-7>
+        <div *ngIf="(mov.fullName != undefined)" style="padding:10px">{{mov.fullName}}</div>
+        <ion-searchbar *ngIf="(mov.fullName == undefined)"
+          (ionInput)="getItems($event)" 
+          placeholder="Ingrese cliente" 
+          [(ngModel)]="mov.fullName">
+        </ion-searchbar>  
+        <ion-list *ngIf="showList">
+          <ion-item *ngFor="let cli of clientsTmp | async" (click)="setClient(cli)">
+            {{ cli.fullName }}
+          </ion-item>
+        </ion-list>  
+      </ion-col>
+      <ion-col col-5>
+        <div style="float:left;padding-top:10px" >Pago:</div>
+        <ion-select [disabled]="(mov.fullName != undefined)"
+          [(ngModel)]="mov.cp" 
+          style="margin-top: 10px !important"
+          interface="popover" class="selectCP">
+          <ion-option value="EF">Efvo</ion-option>
+          <ion-option value="TG">Tarjeta</ion-option>
+          <ion-option value="CC">Cta.Cte.</ion-option>
+          <ion-option value="PC">Pago Cta.</ion-option>
+        </ion-select>        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="showDetails">
+    <ion-grid class="gridInfo">
+      <ion-row class class="rowHeader">
+        <ion-col col-4>Descripcion</ion-col>
+        <ion-col col-2 style="text-align:right">#</ion-col>
+        <ion-col col-3 style="text-align:right">$ Unit.</ion-col>
+        <ion-col col-3 style="text-align:right">SubTot.</ion-col>
+      </ion-row> 
+      <ion-row *ngFor="let det of details$ | async" 
+        (click)="openDetail($evnet, det)"
+        class="rowDetail">
+        <ion-col col-4>{{det.product}}</ion-col>
+        <ion-col col-2 style="text-align:right" min="1">{{det.quantity}}</ion-col>
+        <ion-col col-3 style="text-align:right" min="0">{{det.price | currency:'USD':true:'1.0-0'}}</ion-col>
+        <ion-col col-3 style="text-align:right" min="0">{{det.subtotal | currency:'USD':true:'1.0-0'}}</ion-col>
+      </ion-row>
+    </ion-grid>  
+    
+    <ion-fab left bottom>
+      <button ion-fab style="background:red" mini (click)="deleteMovement(mov)">
+        <ion-icon name="trash" ></ion-icon>
+      </button>
+    </ion-fab>
+    <ion-fab right bottom>
+      <button ion-fab color="secondary" mini (click)="openDetail()">
+        <span style="font-size:30px">+</span>
+      </button>
+    </ion-fab>
+  </div>
+</ion-content>

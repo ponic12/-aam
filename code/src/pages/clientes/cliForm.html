@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="close-circle" class="closeIcon" showWhen="android,windows,mobileweb,core"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card
+    style="padding: 20px 5px;background:linear-gradient(#eef, lightblue)">
+      
+        <ion-item style="background:transparent">
+          <ion-icon name="person" item-left></ion-icon>
+          <ion-input type="text" [(ngModel)]="client.firstName" clearInput placeholder="Ingrese nombre"></ion-input>
+        </ion-item>
+      
+        <ion-item style="background:transparent">
+          <ion-icon name="person" item-left></ion-icon>
+          <ion-input type="text" [(ngModel)]="client.lastName" clearInput placeholder="Ingrese apellido"></ion-input>
+        </ion-item>
+        
+        <!--<ion-item style="background:transparent">-->
+        <!--  <ion-icon name="contacts" item-left></ion-icon>-->
+        <!--  <ion-label style="padding-left:7px">Sexo</ion-label>-->
+        <!--  <ion-select [(ngModel)]="client.sex">-->
+        <!--    <ion-option value="Mujer">Mujer</ion-option>-->
+        <!--    <ion-option value="Hombre">Hombre</ion-option>>-->
+        <!--  </ion-select>-->
+        <!--</ion-item>-->
+        
+        <ion-item style="background:transparent">
+          <ion-icon name="mail" item-left></ion-icon>
+          <ion-input type="text" [(ngModel)]="client.email" placeholder="Correo electronico"></ion-input>
+        </ion-item>
+        
+        <ion-item style="background:transparent">
+          <ion-icon name="pin" item-left></ion-icon>
+          <ion-input type="text" [(ngModel)]="client.address" placeholder="Domicilio"></ion-input>
+        </ion-item>
+        
+        <ion-item style="background:transparent">
+          <ion-icon name="call" item-left></ion-icon>
+          <ion-input type="text" [(ngModel)]="client.telephone" placeholder="Telefono o celular"></ion-input>
+        </ion-item>
+        
+        <ion-item style="background:transparent">
+            <ion-icon name="calendar " item-left></ion-icon>
+            <ion-datetime sytle="padding-left:6px !important;"
+                displayFormat="DD MMMM YYYY" [(ngModel)]="client.birthday"></ion-datetime>
+            <!--<ion-datetime -->
+            <!--    displayFormat="DD MMMM YYYY, HH:mm" -->
+            <!--    formControlName="measurementDate" -->
+            <!--    min="{{ diet.startDate | date:'y-MM-dd' }}"-->
+            <!--    max="{{ diet.endDate | date:'y-MM-dd' }}"></ion-datetime>-->
+        </ion-item>
+        
+        <button ion-button block (click)="save()" 
+          style="width: 50%;position: absolute;margin-left: 20%;margin-top: 30px;">
+          {{action}}
+        </button>
+  </ion-card>
+</ion-content>
