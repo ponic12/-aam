@@ -2,8 +2,13 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
+var request = require('request');
+
+
+const fs = admin.firestore();
+
 exports.detailEvent = functions.firestore.document('movements/{mid}/details/{did}').onWrite(event => {
-    const fs = admin.firestore();
+    //const fs = admin.firestore();
     const mid = event.params.mid;
     var info = event.data;
     var oldDoc = info.previous;
@@ -49,7 +54,7 @@ exports.detailEvent = functions.firestore.document('movements/{mid}/details/{did
     }
 });
 exports.movementEvent = functions.firestore.document('movements/{mid}').onWrite(event => {
-    const fs = admin.firestore();
+    //const fs = admin.firestore();
     const mid = event.params.mid;
     var info = event.data;
     var oldDoc = info.previous;
@@ -94,7 +99,7 @@ exports.salesByDay = functions.https.onRequest((request, response) => {
     var totCC = 0;
     var totPC = 0;
     
-    const fs = admin.firestore();
+    //const fs = admin.firestore();
     fs.collection('movements')
     .where('datetime', '>', d)
     .get()
@@ -185,8 +190,46 @@ exports.salesByDay = functions.https.onRequest((request, response) => {
     });
 });
 
+
+exports.testEvent = functions.firestore.document('/test/{id}').onWrite(event => {
+    const id = event.params.id;
+    var info = event.data;
+    
+    var newVal = {};
+    try {
+        newVal = info.data();
+        console.log('newVal: ', newVal);
+    }
+    catch (e) {
+        console.log('reg delete: ', oldVal);
+    }
+    if (newVal) {
+        var oldDoc = event.data.previous;
+        try{
+            var oldVal = oldDoc.data();
+            if (oldVal) { // UPDATE
+                console.log('updating old: ', oldVal);
+            }
+            else {  // INSERT  
+                console.log('item add: ', newVal);
+                var d = new Date(newVal.datetime);
+                var yyyy = d.getFullYear();
+                var mm = d.getMonth();
+                var dd = d.getDay();
+                var dstr = yyyy && mm && dd;
+    
+                var key = newVal.user + '_' + dstr;
+                console.log('key: ', key);
+            }            
+        }
+        catch(err){
+            console.log('OLD VAL: ',err);
+        }
+    }
+});
+
 function updateClient(mov , dif){
-    const fs = admin.firestore();
+    //const fs = admin.firestore();
     const cref = fs.collection('clients').doc(mov.idClient);
     return cref.get().then(docCli => {
         const cli = docCli.data();
