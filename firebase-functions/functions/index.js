@@ -56,6 +56,7 @@ exports.detailEvent = functions.firestore.document('movements/{mid}/details/{did
 exports.movementEvent = functions.firestore.document('movements/{mid}').onWrite(event => {
     //const fs = admin.firestore();
     const mid = event.params.mid;
+    console.log('mid: ', mid);
     var info = event.data;
     var oldDoc = info.previous;
     var oldVal = oldDoc.data();
