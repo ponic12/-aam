@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { FirebaseService } from '../../services/firebase.service';
-import { DetailList} from '../../share/detailList';
+import { DetailList} from '../../common/detailList';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { CliForm } from './cliForm';
-import { Client } from '../../share/entities/client';
+import { Client } from '../../common/entities/client';
 
 @Component({
   selector: 'page-clientes',

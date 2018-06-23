@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Platform, NavParams, ViewController } from 'ionic-angular';
-import { Client } from '../../share/entities/client';
+import { Client } from '../../common/entities/client';
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({

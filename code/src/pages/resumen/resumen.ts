@@ -4,7 +4,7 @@ import { ModalController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { FirebaseService } from '../../services/firebase.service';
 import { ConfigService } from '../../services/config.service';
-import { Movimientos} from '../../share/movimientos';
+import { Movimientos} from '../../common/movimientos';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
