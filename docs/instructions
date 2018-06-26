@@ -12,6 +12,9 @@ nvm alias default 8.8.1
 #sudo npm install -g n
 #sudo n stable
 
+npm outdated  // Actualiza versiones 
+npm update // Actualiza todo
+
 ////////////////////////////////////////////////
 // IONIC
 
