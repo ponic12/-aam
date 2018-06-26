@@ -11,6 +11,7 @@ import { ResumenPage } from '../pages/resumen/resumen';
 import { ReportesPage } from '../pages/reportes/reportes';
 import { StockPage } from '../pages/stock/stock';
 import { OpcionesPage } from '../pages/opciones/opciones';
+import { FirebaseService } from '../common/services/firebase.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,9 +25,10 @@ export class MyApp implements OnInit, OnDestroy {
   pages: Array<{icon:string, title: string, component: any}>;
 
   constructor(
-    public platform: Platform, 
-    public statusBar: StatusBar, 
-    public splashScreen: SplashScreen) {
+    private platform: Platform, 
+    private statusBar: StatusBar, 
+    private fs: FirebaseService,
+    private splashScreen: SplashScreen) {
     console.log('MyApp constructor')
     this.initializeApp();
     this.pages = [
@@ -36,7 +38,7 @@ export class MyApp implements OnInit, OnDestroy {
       { icon:'pricetags', title: 'Resumenes de Cuenta', component: ResumenPage },
       { icon:'stats', title: 'Reportes', component: ReportesPage },
       { icon:'cut', title: 'Stock', component: StockPage },
-      { icon:'settings', title: 'Opciones', component: OpcionesPage }
+      { icon:'settings', title: 'Opciones', component: OpcionesPage } 
     ];
   }
   
@@ -59,6 +61,9 @@ export class MyApp implements OnInit, OnDestroy {
     });
   }
 
+  download(){
+   this.fs.download('aam.apk')
+  }
   openPage(page) {
     this.nav.setRoot(page.component);
   }

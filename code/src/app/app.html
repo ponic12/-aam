@@ -12,6 +12,10 @@
           (click)="openPage(p)">
           <ion-icon [name]="p.icon" class="menuIcon"></ion-icon><span style="margin-left:10px; text-shadow: 1px 1.5px 1px #aaa;">{{p.title}}</span> 
         </button>
+        <button menuClose ion-item
+          (click)="download()">
+          <ion-icon [name]="appstore" class="menuIcon"></ion-icon><span style="margin-left:10px; text-shadow: 1px 1.5px 1px #aaa;">Descargar</span> 
+        </button>
       </ion-list>
     </ion-content>
   </ion-menu>
