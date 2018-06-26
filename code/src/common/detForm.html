@@ -45,7 +45,7 @@
       
       <ion-item style="background:transparent">
         <ion-icon name="cart" item-left></ion-icon>
-        <label *ngIf="(pin.det.quantity > 0)&&(pin.det.price > 0)">{{calcSubTotal() | currency:'USD':true:'1.0-0'}}</label>
+        <label *ngIf="(pin.det.quantity > 0)&&(pin.det.price > 0)">{{calcSubTotal() | currency:'USD':'true':'1.0-0'}}</label>
       </ion-item>
 
     </ion-card>

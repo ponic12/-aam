@@ -17,7 +17,7 @@
     </ion-range> 
   </ion-card>
   <ion-card padding>
-    <h2 style="text-align:center">Cant.de pesos sin alertar: <strong>{{cfg.maxMoney | currency:'USD':true:'1.0-0'}}</strong></h2>
+    <h2 style="text-align:center">Cant.de pesos sin alertar: <strong>{{cfg.maxMoney | currency:'USD':'true':'1.0-0'}}</strong></h2>
     <ion-range min="0" step="500" max="5000" pin="true" snaps="true" [(ngModel)]="cfg.maxMoney">
       <ion-label range-left class="small-text">0</ion-label>
       <ion-label range-right>$5000</ion-label>

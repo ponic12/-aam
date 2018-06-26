@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit, trigger, transition, state
 import { NavController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { FirebaseService } from '../../services/firebase.service';
+import { FirebaseService } from '../../common/services/firebase.service';
 import { DetailList} from '../../common/detailList';
 
 import { Observable } from 'rxjs/Observable';

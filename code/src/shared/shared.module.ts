@@ -10,20 +10,16 @@ import { ToolsBarComponent } from './components/tools-bar/tools-bar.component'
 
 import { ApplicationService } from './services/application.service'
 import { GlobalService } from './services/global.service'
-import { FirebaseService } from './services/firebase.service'
 // import { FirebaseStorage } from 'firebase/storage'
 import 'firebase/storage'; 
 import { AngularFireModule } from 'angularfire2'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
-import { FIREBASE_CONFIG } from './firebase.config'
 
 @NgModule({
    imports: [
       CommonModule,
       IonicModule,
       IonicStorageModule.forRoot(),
-      AngularFirestoreModule,
-      AngularFireModule.initializeApp(FIREBASE_CONFIG),
       CoreModule
    ],
    declarations: [
@@ -41,8 +37,7 @@ export class SharedModule {
          ngModule: SharedModule,
          providers: [
             GlobalService,
-            ApplicationService,
-            FirebaseService
+            ApplicationService
             //   AngularFireAuth,
             //   AngularFireDatabase
          ]

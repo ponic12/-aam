@@ -8,8 +8,8 @@
   </ion-navbar>
 
   <div style="text-align:center">
-      <ion-label><strong>Total: {{totDay | currency:'USD':true:'1.0-0'}}</strong></ion-label>
-      <ion-label><strong>Efvo:</strong>{{totEF | currency:'USD':true:'1.0-0'}} / <strong>Tar:</strong>{{totTG | currency:'USD':true:'1.0-0'}} / <strong>PC:</strong>{{totPC | currency:'USD':true:'1.0-0'}} / <strong>CC:</strong>{{totCC | currency:'USD':true:'1.0-0'}}</ion-label>
+      <ion-label><strong>Total: {{totDay | currency:'USD':'true':'1.0-0'}}</strong></ion-label>
+      <ion-label><strong>Efvo:</strong>{{totEF | currency:'USD':'true':'1.0-0'}} / <strong>Tar:</strong>{{totTG | currency:'USD':'true':'1.0-0'}} / <strong>PC:</strong>{{totPC | currency:'USD':'true':'1.0-0'}} / <strong>CC:</strong>{{totCC | currency:'USD':'true':'1.0-0'}}</ion-label>
   </div>  
 </ion-header>
 
@@ -28,7 +28,7 @@
         <ion-col col-2 >{{mov.datetime | date:'HH:mm'}}</ion-col>
         <ion-col col-6 >{{mov.fullName}}</ion-col>
         <ion-col col-1 >{{mov.cp}}</ion-col>
-        <ion-col col-3 style="text-align:right">{{mov.amount | currency:'USD':true}}</ion-col>
+        <ion-col col-3 style="text-align:right">{{mov.amount | currency:'USD':'true'}}</ion-col>
       </ion-row>      
     </div>
   </ion-grid>

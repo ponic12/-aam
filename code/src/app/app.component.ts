@@ -1,10 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-//import * as firebase from 'firebase/app';
-//import { AuthService } from '../services/auth.service';
 
 import { LogoPage } from '../pages/logo/logo';
 import { ClientesPage } from '../pages/clientes/clientes';
@@ -18,7 +15,7 @@ import { OpcionesPage } from '../pages/opciones/opciones';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp implements OnInit {
+export class MyApp implements OnInit, OnDestroy {
   user = null;
   
   @ViewChild(Nav) nav: Nav;
@@ -30,7 +27,7 @@ export class MyApp implements OnInit {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen) {
-    
+    console.log('MyApp constructor')
     this.initializeApp();
     this.pages = [
       { icon:'people', title: 'Clientes', component: ClientesPage },
@@ -43,15 +40,13 @@ export class MyApp implements OnInit {
     ];
   }
   
-  ngOnInit(){
-    // this.auth.getAuthState().subscribe(
-    //   (user) => this.user = user);
+  ngOnDestroy(){
+     console.warn('MyApp destructor')
   }
-    
-  // loginWithGoogle(){
-  //   this.auth.loginWithGoogle();
-  // }
-  
+  ngOnInit(){
+     console.log('MyApp init')
+  }
+
   isLoggedIn(){
     var res = false; //const res = this.auth.isLoggedIn();
     return res;
@@ -59,16 +54,12 @@ export class MyApp implements OnInit {
   
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 }

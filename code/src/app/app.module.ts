@@ -31,28 +31,13 @@ import { StockPage } from '../pages/stock/stock';
 import { OpcionesPage } from '../pages/opciones/opciones';
 
 import { CliForm } from '../pages/clientes/cliForm';
-import { Movimientos } from '../share/movimientos';
-import { DetailList } from '../share/detailList';
-import { DetForm } from '../share/detForm';
+import { Movimientos } from '../common/movimientos';
+import { DetailList } from '../common/detailList';
+import { DetForm } from '../common/detForm';
 
-import { FirebaseService } from '../services/firebase.service';
+import { FIREBASE_CONFIG } from '../common/services/firebase.config'
+import { FirebaseService } from '../common/services/firebase.service';
 import { ConfigService } from '../services/config.service';
-
-export const firebaseConfig ={
-  apiKey: "AIzaSyDVXm6zviniUGbxNYt4IkID7h1SLUFK0ZY",
-  authDomain: "pypacc-6b17b.firebaseapp.com",
-  databaseURL: "https://pypacc-6b17b.firebaseio.com",
-  projectId: "pypacc-6b17b",
-  storageBucket: "pypacc-6b17b.appspot.com",
-  messagingSenderId: "412870176697"
-  
-    // apiKey: "AIzaSyCuni6oAx1Lz2DAf1v4JajsBaxcbn9O_EY",
-    // authDomain: "pypaam.firebaseapp.com",
-    // databaseURL: "https://pypaam.firebaseio.com",
-    // projectId: "pypaam",
-    // storageBucket: "pypaam.appspot.com",
-    // messagingSenderId: "1013426715214"
-};
 
 @NgModule({
   declarations: [
@@ -77,7 +62,7 @@ export const firebaseConfig ={
     BrowserAnimationsModule,
     PdfmakeModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFirestoreModule.enablePersistence(),
     ChartsModule
   ],

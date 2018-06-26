@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>
       {{title}} Total: 
-      {{mov.amount | currency:'USD':true:'1.0-0'}}
+      {{mov.amount | currency:'USD':'true':'1.0-0'}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -57,8 +57,8 @@
         class="rowDetail">
         <ion-col col-4>{{det.product}}</ion-col>
         <ion-col col-2 style="text-align:right" min="1">{{det.quantity}}</ion-col>
-        <ion-col col-3 style="text-align:right" min="0">{{det.price | currency:'USD':true:'1.0-0'}}</ion-col>
-        <ion-col col-3 style="text-align:right" min="0">{{det.subtotal | currency:'USD':true:'1.0-0'}}</ion-col>
+        <ion-col col-3 style="text-align:right" min="0">{{det.price | currency:'USD':'true':'1.0-0'}}</ion-col>
+        <ion-col col-3 style="text-align:right" min="0">{{det.subtotal | currency:'USD':'true':'1.0-0'}}</ion-col>
       </ion-row>
     </ion-grid>  
     

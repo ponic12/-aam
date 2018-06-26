@@ -8,7 +8,6 @@ import { NavController } from 'ionic-angular';
 export class LogoPage {
 
   constructor(public navCtrl: NavController){
+     console.log('LogoPage constructor')
   }
-
-
 }

@@ -1,48 +1,44 @@
 import { Component } from '@angular/core';
-import { Platform, NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 import { Client } from '../../common/entities/client';
-import { FirebaseService } from '../../services/firebase.service';
+import { FirebaseService } from '../../common/services/firebase.service';
 
 @Component({
-  templateUrl:'cliForm.html'
+   templateUrl: 'cliForm.html'
 })
 export class CliForm {
-  title:string = "";
-  action:string = "";
-  pin:Client;
-  client:Client = new Client();
+   title: string = "";
+   action: string = "";
+   client: Client = new Client();
 
-  constructor(
-    public platform: Platform,
-    public params: NavParams,
-    public viewCtrl: ViewController,
-    private fs: FirebaseService) {
-      
-    this.pin = this.params.get('pin');
-    if (this.pin){
-      this.client = this.pin;
-      this.title = "Modificar cliente";
-      this.action = "Grabar cambios";
-    }
-    else{
-      this.title = "Nuevo cliente";
-      this.action = "Agregar cliente";
-    }
-  }
-  
-  save(){
-    this.client.fullName = this.client.lastName + ', ' + this.client.firstName;
-    if (this.pin){
-      this.fs.updateClient(this.client);
-    }
-    else{
-      this.fs.addClient(this.client);
-    }
-    this.dismiss();
-  }
+   constructor(
+      public params: NavParams,
+      public viewCtrl: ViewController,
+      private fs: FirebaseService) {
 
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
+      const cli = this.params.get('pin');
+      if (cli.id) {
+         this.client = cli;
+         this.title = "Modificar cliente";
+         this.action = "Grabar cambios";
+      }
+      else {
+         this.title = "Nuevo cliente";
+         this.action = "Agregar cliente";
+      }
+   }
+
+   save() {
+      this.client.fullName = this.client.lastName + ', ' + this.client.firstName;
+      if (this.client.id) 
+         this.fs.updateClient(this.client)
+      else 
+         this.fs.addClient(this.client)
+      this.dismiss();
+   }
+
+   dismiss() {
+      this.viewCtrl.dismiss();
+   }
 }
 

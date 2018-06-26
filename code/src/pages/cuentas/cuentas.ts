@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { FirebaseService } from '../../services/firebase.service';
+import { FirebaseService } from '../../common/services/firebase.service';
 import { ConfigService } from '../../services/config.service';
 import { Movimientos} from '../../common/movimientos';
 
