@@ -36,17 +36,17 @@ export class ClientesPage implements OnInit, OnDestroy {
       this.clients$ = this.fs.getClients('lastName', 'asc');
    }
 
-   openClient($event, cli: Client): void {
+   openClient(cli: Client): void {
       let modal = this.modalCtrl.create(CliForm, { 'pin': cli });
       modal.present();
    }
-   mailClient($event, cli): void {
+   mailClient(cli): void {
       window.location.href = "mailto:" + cli.email;
    }
-   callClient($event, cli): void {
+   callClient(cli): void {
       window.location.href = "tel://" + cli.telephone;
    }
-   deleteClient($event, cli) {
+   deleteClient(cli) {
       console.log(cli);
       let confirm = this.alertCtrl.create({
          title: 'Atencion',

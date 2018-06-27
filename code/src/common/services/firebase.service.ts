@@ -12,9 +12,6 @@ import { ApplicationService } from '../../shared/services/application.service';
 
 @Injectable()
 export class FirebaseService {
-   clientsRef: AngularFirestoreCollection<Client>;
-   clients$: Observable<any[]>;
-
    movementsRef: AngularFirestoreCollection<Movement>;
    movements$: Observable<any[]>;
 
@@ -63,7 +60,8 @@ export class FirebaseService {
    //////////////////////
    // CLIENTs Interface
    //////////////////////
-
+   clientsRef: AngularFirestoreCollection<Client>;
+   clients$: Observable<any[]>;
    getClients(sortName, sortDir): Observable<any[]> {
       this.clientsRef = this.afs.collection<Client>('clients',
          ref => ref.orderBy(sortName, sortDir));
@@ -128,8 +126,7 @@ export class FirebaseService {
    }
 
    updateClient(o): void {
-      var u = this.clientsRef.doc(o.id);
-      u.update(o)
+      this.clientsRef.doc(o.id).update(o)
          .then(function () {
             console.log("Update client ok");
          })

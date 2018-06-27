@@ -72,21 +72,21 @@
       </ion-item>
       
       <ion-item-options side="left">
-        <button ion-button class="cardOps" style="background:linear-gradient(#ffa,orange)" (click)="mailClient($event, cli)">
+        <button ion-button class="cardOps" style="background:linear-gradient(#ffa,orange)" (click)="mailClient(cli)">
           <ion-icon name="text"></ion-icon>
           Mail
         </button>
-        <button ion-button class="cardOps" style="background:linear-gradient(#bbf,#339)"  (click)="callClient($event, cli)">
+        <button ion-button class="cardOps" style="background:linear-gradient(#bbf,#339)"  (click)="callClient(cli)">
           <ion-icon name="call"></ion-icon>
           Llamar
         </button>
       </ion-item-options>
       <ion-item-options side="right">
-        <button ion-button class="cardOps" style="background:linear-gradient(#bfb,#393)" (click)="openClient($event, cli)">
+        <button ion-button class="cardOps" style="background:linear-gradient(#bfb,#393)" (click)="openClient(cli)">
           <ion-icon name="create"></ion-icon>
           Editar
         </button>
-        <button ion-button class="cardOps" style="background:linear-gradient(#fbb,#d22)" (click)="deleteClient($event, cli)">
+        <button ion-button class="cardOps" style="background:linear-gradient(#fbb,#d22)" (click)="deleteClient(cli)">
           <ion-icon name="trash"></ion-icon>
           Borrar
         </button>
