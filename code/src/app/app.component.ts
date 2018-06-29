@@ -11,7 +11,7 @@ import { ResumenPage } from '../pages/resumen/resumen';
 import { ReportesPage } from '../pages/reportes/reportes';
 import { StockPage } from '../pages/stock/stock';
 import { OpcionesPage } from '../pages/opciones/opciones';
-import { FirebaseService } from '../common/services/firebase.service';
+import { FirebaseService } from '../shared/services/firebase.service';
 
 @Component({
   templateUrl: 'app.html'

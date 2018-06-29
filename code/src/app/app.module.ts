@@ -18,8 +18,8 @@ import { ChartsModule } from 'ng2-charts';
 import 'hammerjs';
 import 'chartjs-plugin-zoom';
 
-import { FilterAgenda } from '../services/filterAgenda.pipe';
-import { FilterSales } from '../services/filterSales.pipe';
+import { FilterAgenda } from '../shared/services/filterAgenda.pipe';
+import { FilterSales } from '../shared/services/filterSales.pipe';
 
 //import { SocialSharing } from '@ionic-native/social-sharing';
 //import { File } from '@ionic-native/file';
@@ -39,10 +39,10 @@ import { Movimientos } from '../common/movimientos';
 import { DetailList } from '../common/detailList';
 import { DetForm } from '../common/detForm';
 
-import { FIREBASE_CONFIG } from '../common/services/firebase.config'
-import { FirebaseService } from '../common/services/firebase.service';
-import { ConfigService } from '../services/config.service';
-import { ApplicationService } from '../shared/services/application.service';
+import { FIREBASE_CONFIG } from '../shared/services/firebase.config'
+import { FirebaseService } from '../shared/services/firebase.service';
+import { ConfigService } from '../shared/services/config.service';
+import { ApplicationService } from 'fwk-services';
 
 
 @NgModule({

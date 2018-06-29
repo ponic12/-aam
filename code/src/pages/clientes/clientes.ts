@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FirebaseService } from '../../common/services/firebase.service';
+import { FirebaseService } from '../../shared/services/firebase.service';
 
 import { NavController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';

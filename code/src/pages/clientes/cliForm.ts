@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { Client } from '../../common/entities/client';
-import { FirebaseService } from '../../common/services/firebase.service';
+import { FirebaseService } from '../../shared/services/firebase.service';
 
 @Component({
    templateUrl: 'cliForm.html'

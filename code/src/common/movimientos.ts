@@ -4,7 +4,7 @@ import { ModalController } from 'ionic-angular';
 import { PdfmakeService } from 'ng-pdf-make/pdfmake/pdfmake.service';
 import { Cell, Row, Table } from 'ng-pdf-make/objects/table';
 
-import { FirebaseService } from './services/firebase.service';
+import { FirebaseService } from '../shared/services/firebase.service';
 import { DetailList} from './detailList';
 
 import { Observable } from 'rxjs/Observable';

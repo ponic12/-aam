@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, ModalController, AlertController, Events } from 'ionic-angular';
 import { Platform, NavParams, ViewController } from 'ionic-angular';
 
-import { FirebaseService } from '../../common/services/firebase.service';
+import { FirebaseService } from '../../shared/services/firebase.service';
 //import { Chart } from 'chart.js';
 
 

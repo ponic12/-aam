@@ -4,7 +4,7 @@ import { Platform, NavParams, ViewController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
-import { FirebaseService } from './services/firebase.service';
+import { FirebaseService } from '../shared/services/firebase.service';
 import { Detail } from './entities/detail';
 import { Movement } from './entities/movement';
 

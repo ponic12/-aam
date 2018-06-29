@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core'
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore'
 import * as firebase from 'firebase/app'
 
-import { Client } from '../entities/client'
-import { Movement } from '../entities/movement'
-import { Detail } from '../entities/detail'
+import { Client } from '../../common/entities/client'
+import { Movement } from '../../common/entities/movement'
+import { Detail } from '../../common/entities/detail'
 
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
-import { ApplicationService } from '../../shared/services/application.service';
+import { ApplicationService } from 'fwk-services';
 
 @Injectable()
 export class FirebaseService {

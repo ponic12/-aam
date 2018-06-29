@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ConfigService } from '../../services/config.service';
+import { ConfigService } from '../../shared/services/config.service';
 import { Observable } from 'rxjs/Observable';
 
 

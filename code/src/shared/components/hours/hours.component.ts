@@ -2,8 +2,7 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms'
 import { NgStyle } from '@angular/common'
 
-import { GlobalService } from '../../services/global.service'
-import { ApplicationService } from '../../services/application.service'
+import { ApplicationService, GlobalService } from 'fwk-services'
 
 @Component({
    selector: 'hours',
